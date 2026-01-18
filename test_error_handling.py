@@ -4,6 +4,7 @@
 """
 
 import os
+import sys
 import json
 from study_system import StudySystem
 
@@ -171,6 +172,5 @@ def run_error_tests():
 
 
 if __name__ == "__main__":
-    import sys
     success = run_error_tests()
     sys.exit(0 if success else 1)

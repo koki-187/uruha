@@ -150,7 +150,7 @@ class StudySystem:
     
     def get_subjects(self) -> List[str]:
         """すべての科目を取得"""
-        subjects = set([c.subject for c in self.contents] + [q.subject for q in self.questions])
+        subjects = {c.subject for c in self.contents} | {q.subject for q in self.questions}
         return sorted(list(subjects))
     
     def preview_content(self, subject: Optional[str] = None):
