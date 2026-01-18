@@ -38,12 +38,17 @@ class StudyContent:
     
     @classmethod
     def from_dict(cls, data: Dict):
-        obj = cls(data['subject'], data['topic'], data['content'], data['difficulty'])
-        obj.studied_date = data['studied_date']
-        obj.review_count = data['review_count']
-        obj.correct_count = data['correct_count']
-        obj.total_attempts = data['total_attempts']
-        return obj
+        try:
+            obj = cls(data['subject'], data['topic'], data['content'], data.get('difficulty', 1))
+            obj.studied_date = data.get('studied_date', datetime.now().isoformat())
+            obj.review_count = data.get('review_count', 0)
+            obj.correct_count = data.get('correct_count', 0)
+            obj.total_attempts = data.get('total_attempts', 0)
+            return obj
+        except KeyError as e:
+            raise ValueError(f"学習内容データに必須キーがありません: {e}")
+        except Exception as e:
+            raise ValueError(f"学習内容データの読み込みに失敗しました: {e}")
     
     def get_accuracy(self) -> float:
         """正答率を計算"""
@@ -74,13 +79,18 @@ class Question:
     
     @classmethod
     def from_dict(cls, data: Dict):
-        return cls(
-            data['subject'],
-            data['question'],
-            data['answer'],
-            data.get('options', []),
-            data['difficulty']
-        )
+        try:
+            return cls(
+                data['subject'],
+                data['question'],
+                data['answer'],
+                data.get('options', []),
+                data.get('difficulty', 1)
+            )
+        except KeyError as e:
+            raise ValueError(f"問題データに必須キーがありません: {e}")
+        except Exception as e:
+            raise ValueError(f"問題データの読み込みに失敗しました: {e}")
 
 
 class StudySystem:
@@ -95,10 +105,24 @@ class StudySystem:
     def load_data(self):
         """データを読み込む"""
         if os.path.exists(self.data_file):
-            with open(self.data_file, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                self.contents = [StudyContent.from_dict(c) for c in data.get('contents', [])]
-                self.questions = [Question.from_dict(q) for q in data.get('questions', [])]
+            try:
+                with open(self.data_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    self.contents = [StudyContent.from_dict(c) for c in data.get('contents', [])]
+                    self.questions = [Question.from_dict(q) for q in data.get('questions', [])]
+            except json.JSONDecodeError as e:
+                print(f"⚠️ データファイルの形式が不正です: {e}")
+                print(f"   {self.data_file} を確認してください")
+                self.contents = []
+                self.questions = []
+            except ValueError as e:
+                print(f"⚠️ データの読み込みエラー: {e}")
+                self.contents = []
+                self.questions = []
+            except Exception as e:
+                print(f"⚠️ 予期しないエラー: {e}")
+                self.contents = []
+                self.questions = []
     
     def save_data(self):
         """データを保存する"""
@@ -323,7 +347,11 @@ def main():
             topic = input("トピック: ").strip()
             content = input("内容: ").strip()
             difficulty = input("難易度 (1-5): ").strip()
-            difficulty = int(difficulty) if difficulty.isdigit() else 1
+            try:
+                difficulty = int(difficulty) if difficulty else 1
+                difficulty = max(1, min(5, difficulty))  # 1-5の範囲に制限
+            except ValueError:
+                difficulty = 1
             system.add_content(subject, topic, content, difficulty)
         
         elif choice == '2':
@@ -333,12 +361,19 @@ def main():
             has_options = input("選択肢を追加しますか？ (y/n): ").strip().lower()
             options = []
             if has_options == 'y':
-                num_options = int(input("選択肢の数: ").strip())
-                for i in range(num_options):
-                    opt = input(f"選択肢 {i+1}: ").strip()
-                    options.append(opt)
+                try:
+                    num_options = int(input("選択肢の数: ").strip())
+                    for i in range(num_options):
+                        opt = input(f"選択肢 {i+1}: ").strip()
+                        options.append(opt)
+                except ValueError:
+                    print("⚠️ 数値を入力してください。選択肢なしで登録します。")
             difficulty = input("難易度 (1-5): ").strip()
-            difficulty = int(difficulty) if difficulty.isdigit() else 1
+            try:
+                difficulty = int(difficulty) if difficulty else 1
+                difficulty = max(1, min(5, difficulty))  # 1-5の範囲に制限
+            except ValueError:
+                difficulty = 1
             system.add_question(subject, question, answer, options, difficulty)
         
         elif choice == '3':
@@ -365,7 +400,11 @@ def main():
                 print("\n科目:", ", ".join(subjects))
                 subject = input("科目を選択 (空白で全て): ").strip()
                 num = input("問題数 (デフォルト: 5): ").strip()
-                num = int(num) if num.isdigit() else 5
+                try:
+                    num = int(num) if num else 5
+                    num = max(1, num)  # 最低1問
+                except ValueError:
+                    num = 5
                 system.generate_mini_test(subject if subject else None, num)
             else:
                 system.generate_mini_test()
