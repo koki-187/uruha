@@ -1,0 +1,123 @@
+{
+  "contents": [
+    {
+      "subject": "数学",
+      "topic": "二次方程式",
+      "content": "ax² + bx + c = 0 の形の方程式。解の公式: x = (-b ± √(b²-4ac)) / 2a",
+      "difficulty": 3,
+      "studied_date": "2026-01-18T06:00:00",
+      "review_count": 0,
+      "correct_count": 0,
+      "total_attempts": 0
+    },
+    {
+      "subject": "数学",
+      "topic": "三角関数",
+      "content": "sin²θ + cos²θ = 1 (三角関数の基本公式)",
+      "difficulty": 2,
+      "studied_date": "2026-01-18T06:00:00",
+      "review_count": 0,
+      "correct_count": 0,
+      "total_attempts": 0
+    },
+    {
+      "subject": "英語",
+      "topic": "過去完了形",
+      "content": "had + 過去分詞。ある過去の時点より前に完了した動作を表す",
+      "difficulty": 2,
+      "studied_date": "2026-01-18T06:00:00",
+      "review_count": 0,
+      "correct_count": 0,
+      "total_attempts": 0
+    },
+    {
+      "subject": "英語",
+      "topic": "関係代名詞",
+      "content": "who(人), which(物), that(人・物)。先行詞を修飾する",
+      "difficulty": 3,
+      "studied_date": "2026-01-18T06:00:00",
+      "review_count": 0,
+      "correct_count": 0,
+      "total_attempts": 0
+    },
+    {
+      "subject": "歴史",
+      "topic": "明治維新",
+      "content": "1868年、江戸幕府が倒れ、天皇を中心とする新政府が樹立",
+      "difficulty": 2,
+      "studied_date": "2026-01-18T06:00:00",
+      "review_count": 0,
+      "correct_count": 0,
+      "total_attempts": 0
+    }
+  ],
+  "questions": [
+    {
+      "subject": "数学",
+      "question": "x² - 5x + 6 = 0 の解は？",
+      "answer": "2, 3",
+      "options": [
+        "1, 6",
+        "2, 3",
+        "-2, -3",
+        "5, 1"
+      ],
+      "difficulty": 2
+    },
+    {
+      "subject": "数学",
+      "question": "sin 30° の値は？",
+      "answer": "1/2",
+      "options": [
+        "0",
+        "1/2",
+        "√3/2",
+        "1"
+      ],
+      "difficulty": 1
+    },
+    {
+      "subject": "英語",
+      "question": "「彼は昨日来る前に宿題を終えていた」を英語で言うと？",
+      "answer": "He had finished his homework before he came yesterday",
+      "options": [],
+      "difficulty": 3
+    },
+    {
+      "subject": "英語",
+      "question": "This is the book ( ) I bought yesterday. カッコに入る関係代名詞は？",
+      "answer": "that",
+      "options": [
+        "who",
+        "which",
+        "that",
+        "where"
+      ],
+      "difficulty": 2
+    },
+    {
+      "subject": "歴史",
+      "question": "明治維新が起こった年は？",
+      "answer": "1868",
+      "options": [
+        "1853",
+        "1868",
+        "1877",
+        "1894"
+      ],
+      "difficulty": 1
+    },
+    {
+      "subject": "歴史",
+      "question": "江戸幕府最後の将軍は誰？",
+      "answer": "徳川慶喜",
+      "options": [
+        "徳川家康",
+        "徳川家光",
+        "徳川吉宗",
+        "徳川慶喜"
+      ],
+      "difficulty": 2
+    }
+  ]
+}
