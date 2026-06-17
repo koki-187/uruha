@@ -24,19 +24,19 @@ git checkout -b feature/my-agent-works-hp-lp
 
 | No | タスク | 成果物 | 優先度 | 状態 |
 |---:|---|---|---|---|
-| 0-1 | 掲載情報の公開範囲を整理 | `01-publication-info-checklist.md` | High | Started |
-| 0-2 | プロダクト販売ステータスを整理 | `02-product-sales-status.md` | High | Started |
-| 0-3 | 価格表・導入プランを整理 | `03-pricing-and-plan.md` | High | Started |
-| 0-4 | Trust / Governance本文を作成 | `04-trust-governance-copy.md` | High | Started |
-| 0-5 | 画像利用一覧・alt文を作成 | `05-image-usage-alt-text.md` | High | Started |
-| 0-6 | 法務系ページの初稿を整理 | `06-legal-pages-checklist.md` | High | ToDo |
-| 0-7 | 問い合わせフォーム仕様を確定 | `07-contact-form-spec.md` | High | ToDo |
+| 0-1 | 掲載情報の公開範囲を整理 | `01-publication-info-checklist.md` | High | Drafted |
+| 0-2 | プロダクト販売ステータスを整理 | `02-product-sales-status.md` | High | Drafted |
+| 0-3 | 価格表・導入プランを整理 | `03-pricing-and-plan.md` | High | Drafted |
+| 0-4 | Trust / Governance本文を作成 | `04-trust-governance-copy.md` | High | Drafted |
+| 0-5 | 画像利用一覧・alt文を作成 | `05-image-usage-alt-text.md` | High | Drafted |
+| 0-6 | 法務系ページの初稿を整理 | `06-legal-pages-checklist.md` | High | Drafted |
+| 0-7 | 問い合わせフォーム仕様を確定 | `07-contact-form-spec.md` | High | Drafted |
 
 # Phase 1：会社HP構築
 
 | No | タスク | 内容 | 優先度 | 状態 |
 |---:|---|---|---|---|
-| 1-1 | トップページ作成 | Hero / Business / Products / Trust / CTA | High | ToDo |
+| 1-1 | トップページ作成 | Hero / Business / Products / Trust / CTA | High | Next |
 | 1-2 | Aboutページ作成 | 会社概要・設立背景 | High | ToDo |
 | 1-3 | Missionページ作成 | Mission / Vision / Value | Medium | ToDo |
 | 1-4 | Businessページ作成 | 事業領域 | High | ToDo |
@@ -89,7 +89,7 @@ git checkout -b feature/my-agent-works-hp-lp
 
 ## 次に実行すること
 
-1. Phase 0の5資料を確定する。
-2. 問い合わせフォーム仕様を決める。
-3. 実装ブランチを作成する。
-4. 会社HPトップから構築開始する。
+1. 実装ブランチを作成する。
+2. 会社HPトップのワイヤーフレームを作成する。
+3. TOPページから実装を開始する。
+4. 会社HP公開後にMy Agent Series LPと宅建BOOST LPへ進む。
